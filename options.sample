@@ -1,0 +1,5 @@
+fileprefix <nameshort><.senum><.episodeshort>
+nopurge 1
+refreshexcludegroups local,regional
+tagformattitle <title>
+whitespace 1

@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# Run pvr
+#
+umask 2
+timeout -t 3540 /usr/local/bin/get_iplayer --refresh --pvr --quiet 2>> /var/log/get_iplayer.log

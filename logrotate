@@ -1,0 +1,7 @@
+/var/log/get_iplayer*.log {
+    weekly
+    rotate 4
+    compress
+    delaycompress
+    missingok
+}

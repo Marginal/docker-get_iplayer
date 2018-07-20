@@ -4,7 +4,7 @@ EXPOSE 1935
 ENV GETIPLAYER_OUTPUT=/output GETIPLAYER_PROFILE=/output/.get_iplayer
 VOLUME "$GETIPLAYER_OUTPUT"
 
-RUN apk --update --no-cache add ffmpeg perl-cgi perl-mojolicious perl-lwp-protocol-https perl-xml-simple perl-xml-libxml logrotate
+RUN apk --update --no-cache add ffmpeg perl-cgi perl-mojolicious perl-lwp-protocol-https perl-xml-libxml logrotate
 
 RUN wget -qnd "https://bitbucket.org/shield007/atomicparsley/raw/68337c0c05ec4ba2ad47012303121aaede25e6df/downloads/build_linux_x86_64/AtomicParsley" && install -m 755 -t /usr/local/bin ./AtomicParsley && rm ./AtomicParsley
 

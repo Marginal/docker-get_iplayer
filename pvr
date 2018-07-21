@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Run pvr. Timeout in 4 hours.
+# Run pvr
 #
 umask 2
-timeout -t 14340 /usr/local/bin/get_iplayer --pvr --quiet 2>> /var/log/get_iplayer.log
+/usr/local/bin/get_iplayer --pvr --quiet 2>> /var/log/get_iplayer.log

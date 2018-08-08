@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# Docker entrypoint
+#
+/usr/sbin/crond
+umask 2
+su-exec $PUID:$PGID /usr/local/bin/get_iplayer.cgi -p 1935

@@ -8,14 +8,18 @@ The PVR recording feature runs hourly. The get_iplayer version is updated daily.
 
 The PVR can be accessed on port `1935/tcp`.
 
-Video files will be placed in the `/output` bind mount.
+Downloaded TV & radio files will be placed in the `/output` bind mount.
+
+Environment variables `PUID` and `PGID` can be changed to change the owner and group of downloaded files.
 
 ## Example invocation
 
+This makes the PVR available on port 1935, and makes downloaded files owned by the current user:
+
 ```sh
-docker run -d -p 1935:1935 -v /destination/on/host:/output marginal/get_iplayer:latest
+docker run -d -e PUID=`id -u` -e PGID=`id -g` -p 1935:1935 -v /destination/on/host:/output marginal/get_iplayer:latest
 ```
-Replace `/destination/on/host` with the path of a folder on the host machine where you would like the video files to be placed.
+Replace `/destination/on/host` with the path of a folder on the host machine where you would like the downloaded files to be placed.
 
 ## get_iplayer configuration
 

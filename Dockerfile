@@ -13,7 +13,7 @@ RUN wget -qnd "https://bitbucket.org/shield007/atomicparsley/raw/68337c0c05ec4ba
 
 RUN wget -qO - `wget -qO - "https://api.github.com/repos/get-iplayer/get_iplayer/releases/latest" | grep "tarball_url" | cut -d'"' -f4` | tar -zxf - && cd `ls -d get-iplayer*` && install -m 755 -t /usr/local/bin ./get_iplayer ./get_iplayer.cgi && cd / && rm -rf get-iplayer*
 
-COPY entrypoint /entrypoint
+COPY start /start
 COPY pvr /etc/periodic/hourly/get_iplayer_pvr
 COPY update /etc/periodic/daily/get_iplayer_update
 COPY logrotate /etc/logrotate.d/get_iplayer

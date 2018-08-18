@@ -10,7 +10,7 @@ The PVR can be accessed on port `1935/tcp`.
 
 Downloaded TV & radio files will be placed in the `/output` bind mount.
 
-Environment variables `PUID` and `PGID` can be changed to change the owner and group of downloaded files.
+Environment variables `PUID` and `PGID` can be set to dictate the owner and group of downloaded files (useful if you're putting these files in a shared folder).
 
 ## Example invocation
 

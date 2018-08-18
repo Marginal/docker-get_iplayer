@@ -28,4 +28,4 @@ COPY update /etc/periodic/daily/get_iplayer_update
 COPY logrotate /etc/logrotate.d/get_iplayer
 
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD /entrypoint
+CMD /start

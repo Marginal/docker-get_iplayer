@@ -1,11 +1,8 @@
 FROM alpine:latest
 MAINTAINER Jonathan Harris <jonathan@marginal.org.uk>
 EXPOSE 1935
-ENV GETIPLAYER_OUTPUT=/output GETIPLAYER_PROFILE=/output/.get_iplayer
+ENV GETIPLAYER_OUTPUT=/output GETIPLAYER_PROFILE=/output/.get_iplayer PUID=1000 PGID=100
 VOLUME "$GETIPLAYER_OUTPUT"
-
-# Output file ownership
-ENV PUID=1000 PGID=100
 
 RUN apk --update --no-cache add ffmpeg perl-cgi perl-mojolicious perl-lwp-protocol-https perl-xml-libxml jq logrotate su-exec tini
 
@@ -22,10 +19,7 @@ RUN wget -qO - "https://api.github.com/repos/get-iplayer/get_iplayer/releases/la
     rm -rf get-iplayer* && \
     rm /tmp/latest.json
 
-COPY start /start
-COPY pvr /etc/periodic/hourly/get_iplayer_pvr
-COPY update /etc/periodic/daily/get_iplayer_update
-COPY logrotate /etc/logrotate.d/get_iplayer
+COPY files/ /
 
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD /start

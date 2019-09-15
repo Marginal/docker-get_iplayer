@@ -4,4 +4,4 @@
 #
 /usr/sbin/crond
 umask 2
-su-exec $PUID:$PGID /usr/local/bin/get_iplayer.cgi -p 1935
+su-exec $PUID:$PGID /usr/local/bin/get_iplayer.cgi -p $PORT

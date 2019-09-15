@@ -1,7 +1,7 @@
 FROM alpine:latest
 MAINTAINER Jonathan Harris <jonathan@marginal.org.uk>
-EXPOSE 1935
-ENV GETIPLAYER_OUTPUT=/output GETIPLAYER_PROFILE=/output/.get_iplayer PUID=1000 PGID=100
+ENV GETIPLAYER_OUTPUT=/output GETIPLAYER_PROFILE=/output/.get_iplayer PUID=1000 PGID=100 PORT=1935
+EXPOSE $PORT
 VOLUME "$GETIPLAYER_OUTPUT"
 
 RUN apk --update --no-cache add ffmpeg perl-cgi perl-mojolicious perl-lwp-protocol-https perl-xml-libxml jq logrotate su-exec tini

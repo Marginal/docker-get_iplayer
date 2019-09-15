@@ -6,7 +6,7 @@ The PVR recording feature runs hourly. The get_iplayer version is updated daily.
 
 ## Image configuration
 
-The PVR can be accessed on port `1935/tcp`.
+The PVR can be accessed by default on port `1935/tcp`. Set the environment variable `PORT` to override.
 
 Downloaded TV & radio files will be placed in the `/output` bind mount.
 

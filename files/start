@@ -2,6 +2,16 @@
 #
 # Docker entrypoint
 #
+
+# Ensure up-to-date
+/etc/periodic/daily/get_iplayer_update
+
+# Start cron
 /usr/sbin/crond
+
+# Restart if killed, e.g. due to update
 umask 2
-su-exec $PUID:$PGID /usr/local/bin/get_iplayer.cgi -p $PORT
+while true; do
+    /usr/local/bin/get_iplayer -V
+    su-exec $PUID:$PGID /usr/local/bin/get_iplayer.cgi -p $PORT
+done

@@ -1,5 +1,12 @@
 #!/bin/sh
 #
-# Update get_iplayer
+# Check for get_iplayer update.
+# When updating will kill any active downloads launched from web front-end, but not those launched by hourly background PVR.
 #
-(wget -qO - "`wget -qO - 'https://api.github.com/repos/get-iplayer/get_iplayer/releases/latest' | jq -r .tarball_url`" | tar -zxf - && cd get-iplayer* && install -m 755 -t /usr/local/bin ./get_iplayer ./get_iplayer.cgi && cd $OLDPWD && rm -rf get-iplayer*) 2>> /var/log/get_iplayer_update.log
+(
+    OLD=`get_iplayer -V 2>&1 | sed -nE 's/get_iplayer v(\d+)\.(\d+).*/\1\2/p'`	# e.g. 321
+    wget -qO - "https://api.github.com/repos/get-iplayer/get_iplayer/releases/latest" > /tmp/latest.json
+    NEW=`jq -r .name /tmp/latest.json | sed -nE 's/v(\d+)\.(\d+).*/\1\2/p'`	# e.g. 322
+    [ ! -z "$OLD" ] && [ ! -z "$NEW" ] && [ $OLD -lt $NEW ] && echo "Updating get_iplayer $OLD -> $NEW" 1>&2 && wget -qO - "`jq -r .tarball_url /tmp/latest.json`" | tar -zxf - && cd get-iplayer* && install -m 755 -t /usr/local/bin ./get_iplayer ./get_iplayer.cgi && cd $OLDPWD && rm -rf get-iplayer* && PID=`ps | grep "/usr/local/bin/get_iplayer.cgi" | grep -v grep | cut -c1-6` && [ ! -z "$PID" ] && kill $PID
+) 2>> /var/log/get_iplayer_update.log
+rm -f /tmp/latest.json

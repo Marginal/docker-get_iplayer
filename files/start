@@ -6,7 +6,8 @@
 # Ensure up-to-date
 /etc/periodic/daily/get_iplayer_update
 
-# Start cron
+# Start cron with output to syslog
+/sbin/syslogd
 /usr/sbin/crond
 
 # Restart if killed, e.g. due to update

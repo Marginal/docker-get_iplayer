@@ -12,6 +12,8 @@ Downloaded TV & radio files will be placed in the `/output` bind mount.
 
 Environment variables `PUID` and `PGID` can be set to dictate the owner and group of downloaded files (useful if you're putting these files in a shared folder).
 
+If you're running behind a reverse proxy set the environment variable `BASEURL` to the full proxy URL.
+
 ## Example invocation
 
 This makes the PVR available on port 1935, and makes downloaded files owned by the current user:

@@ -14,5 +14,9 @@
 umask 2
 while true; do
     /usr/local/bin/get_iplayer -V
-    su-exec $PUID:$PGID /usr/local/bin/get_iplayer.cgi -p $PORT
+    if [ -z "$BASEURL" ]; then
+        su-exec $PUID:$PGID /usr/local/bin/get_iplayer.cgi -p $PORT;
+    else
+        su-exec $PUID:$PGID /usr/local/bin/get_iplayer.cgi -p $PORT -b "$BASEURL";
+    fi
 done

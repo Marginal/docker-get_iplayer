@@ -1,4 +1,5 @@
 fileprefix <nameshort><.senum><.episodeshort>
 refreshexcludegroups local,regional
 tagformattitle <title>
+thumbsize 512
 whitespace 1

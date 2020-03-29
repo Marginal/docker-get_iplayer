@@ -3,4 +3,5 @@
 # Run pvr
 #
 umask 2
-su-exec $PUID:$PGID /usr/local/bin/get_iplayer --pvr --quiet 2>> /var/log/get_iplayer.log
+/bin/date -R >> /var/log/get_iplayer.log
+su-exec $PUID:$PGID /usr/local/bin/get_iplayer --pvr --nocopyright --quiet 2>&1 | grep -v 'INFO: PVR Run:\|^\.*$' >> /var/log/get_iplayer.log

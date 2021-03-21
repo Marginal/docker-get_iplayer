@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  get_iplayer:
+    image: marginal/get_iplayer:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        PUID: 1000 # uid -u
+        PGID: 100  # uid -g
+    volumes:
+      - /destination/on/host:/output
+    ports:
+      - "1935:1935"

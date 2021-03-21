@@ -6,9 +6,10 @@ VOLUME "$GETIPLAYER_OUTPUT"
 
 RUN apk --update --no-cache add ffmpeg perl-cgi perl-mojolicious perl-lwp-protocol-https perl-xml-libxml jq logrotate su-exec tini
 
-RUN wget -qnd "https://bitbucket.org/shield007/atomicparsley/raw/68337c0c05ec4ba2ad47012303121aaede25e6df/downloads/build_linux_x86_64/AtomicParsley" && \
+RUN wget -qnd `wget -qO - "https://api.github.com/repos/wez/atomicparsley/releases/latest" | jq -r .assets[].browser_download_url | grep Alpine` && \
+    unzip AtomicParsleyAlpine.zip && \
     install -m 755 -t /usr/local/bin ./AtomicParsley && \
-    rm ./AtomicParsley
+    rm ./AtomicParsley ./AtomicParsleyAlpine.zip
 
 RUN wget -qO - "https://api.github.com/repos/get-iplayer/get_iplayer/releases/latest" > /tmp/latest.json && \
     echo get_iplayer release `jq -r .name /tmp/latest.json` && \

@@ -3,3 +3,5 @@ refreshexcludegroups local,regional
 tagformattitle <title>
 thumbsize 512
 whitespace 1
+# To send a notification after a TV download see example below using a Webhook to send a Notification in Slack
+tvcommand curl -X POST -H 'Content-type: application/json' --data '{"text": "<nameshort> - <senum> - <episodeshort> has been downloaded."}'  https://hooks.slack.com/services/YOUR/TOKENIZED/URL

@@ -27,7 +27,7 @@ Replace `/destination/on/host` with the path of a folder on the host machine whe
 
 get_iplayer's configuration and cache will be written to the `.get_iplayer` subfolder under the `/output` bind mount. You can set get_iplayer [options](https://github.com/get-iplayer/get_iplayer/wiki/options) in the file `/destination/on/host/.get_iplayer/options`.
 
-Refer to the file [options.sample](https://raw.githubusercontent.com/Marginal/docker-get_iplayer/master/options.sample) for examples.
+Refer to the file [options.sample](https://raw.githubusercontent.com/Marginal/docker-get_iplayer/master/options.sample) for examples, including how to setup to send a Slack notification after a download.
 
 ## Migrating an existing get_iplayer installation
 

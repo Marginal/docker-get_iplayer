@@ -4,7 +4,7 @@ ENV GETIPLAYER_OUTPUT=/output GETIPLAYER_PROFILE=/output/.get_iplayer PUID=1000 
 EXPOSE $PORT
 VOLUME "$GETIPLAYER_OUTPUT"
 
-RUN apk --update --no-cache add ffmpeg perl-cgi perl-mojolicious perl-lwp-protocol-https perl-xml-libxml jq logrotate su-exec tini
+RUN apk --update --no-cache add ffmpeg perl-cgi perl-mojolicious perl-lwp-protocol-https perl-xml-libxml jq logrotate su-exec tini curl
 
 RUN wget -qnd `wget -qO - "https://api.github.com/repos/wez/atomicparsley/releases/latest" | jq -r .assets[].browser_download_url | grep Alpine` && \
     unzip AtomicParsleyAlpine.zip && \

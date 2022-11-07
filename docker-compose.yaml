@@ -6,8 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        PUID: 1000 # uid -u
-        PGID: 100  # uid -g
+        PUID: 1000 # id -u
+        PGID: 100  # id -g
     volumes:
       - /destination/on/host:/output
     ports:

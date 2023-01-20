@@ -29,6 +29,8 @@ get_iplayer's configuration and cache will be written to the `.get_iplayer` subf
 
 Refer to the file [options.sample](https://raw.githubusercontent.com/Marginal/docker-get_iplayer/master/options.sample) for examples, including how to setup to send a Slack notification after a download.
 
+**If undertaking a new installation then create a new file and paste the contets of the `options.sample` file into it** - e.g. `nano /destination/on/host/.get_iplayer/options` (if you do not create a baseline options file then the container won't load and will get stuck in a loop looking for files.
+
 ## Migrating an existing get_iplayer installation
 
 1. Copy your existing `.get_iplayer` folder over to `/destination/on/host/.get_iplayer` .
